@@ -84,7 +84,7 @@ def hated_movies(movie_id):
 
     # sort by descending score
     scores.sort(reverse=True, key=lambda x: x[0])
-    # take the 3 worst
+    # take the 3 worst films
     top3 = [m for _, m in scores[:3]]
     return jsonify(top3)
 
