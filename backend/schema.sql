@@ -2,9 +2,9 @@
 CREATE TABLE Movie (
   movie_id SERIAL PRIMARY KEY,
   title TEXT NOT NULL
-  violence_level INTEGER NOT NULL,
-  pacing INTEGER NOT NULL,
-  tone INTEGER NOT NULL
+  violence_level INTEGER CHECK (violence_level BETWEEN 1 AND 5),
+  pacing INTEGER CHECK (pacing BETWEEN 1 AND 5),
+  tone INTEGER CHECK (tone BETWEEN 1 AND 5)
 );
 
 CREATE TABLE Genre (
