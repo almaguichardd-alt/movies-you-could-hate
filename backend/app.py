@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from db import get_connection
+from database import get_connection
 from hate_score import compute_hate_score
 
 app = Flask(__name__)
