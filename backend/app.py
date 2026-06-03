@@ -1,9 +1,10 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from database import get_connection
 from hate_score import compute_hate_score
 
 app = Flask(__name__)
-
+CORS(app)  # enable CORS for all routes
 import re
 
 
@@ -122,6 +123,20 @@ def search_movies():
             matches.append({"movie_id": movie_id, "title": title})
 
     return jsonify(matches)
+
+@app.get("/movies")
+def get_all_movies():
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT movie_id, title FROM Movie ORDER BY movie_id")
+    rows = cur.fetchall()
+    cur.close()
+    conn.close()
+
+    return jsonify([
+        {"movie_id": r[0], "title": r[1]}
+        for r in rows
+    ])
 
 
 # launch the server
