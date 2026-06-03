@@ -90,10 +90,6 @@ def hated_movies(movie_id):
     top3 = [m for _, m in scores[:3]]
     return jsonify(top3)
 
-# launch the server
-if __name__ == "__main__":
-    app.run(debug=True)
-
 
 # endpoint: accepts regex pattern from user
 @app.get("/search")
@@ -122,3 +118,8 @@ def search_movies():
             matches.append({"movie_id": movie_id, "title": title})
 
     return jsonify(matches)
+
+
+# launch the server
+if __name__ == "__main__":
+    app.run(debug=True)
