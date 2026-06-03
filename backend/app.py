@@ -1,8 +1,10 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from database import get_connection
 from hate_score import compute_hate_score
 
 app = Flask(__name__)
+
+import re
 
 
 # helper to find a film
@@ -91,3 +93,32 @@ def hated_movies(movie_id):
 # launch the server
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+# endpoint: accepts regex pattern from user
+@app.get("/search")
+def search_movies():
+    pattern = request.args.get("title")
+    if not pattern:
+        return jsonify({"error": "Missing ?title=regex_pattern"}), 400
+
+    # compile regex safely
+    try:
+        regex = re.compile(pattern, re.IGNORECASE)
+    except re.error:
+        return jsonify({"error": "Invalid regular expression"}), 400
+
+    # fetch all movies
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT movie_id, title FROM Movie")
+    rows = cur.fetchall()
+    conn.close()
+
+    # filter using regex
+    matches = []
+    for movie_id, title in rows:
+        if regex.search(title):
+            matches.append({"movie_id": movie_id, "title": title})
+
+    return jsonify(matches)
