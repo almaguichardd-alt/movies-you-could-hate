@@ -3,7 +3,7 @@
 # How to Compile the Web-App from Source
 # (1) Clone the repository by running the following command in Terminal:
 #           git clone https://github.com/almaguichardd-alt/movies-you-could-hate.git
-# Then, move to the backend folder: cd movies-you-could-hate/backend
+# Then, move to the backend folder: cd movies-you-could-hate\backend
 
 
 # (2) Install Python Dependencies by running:
