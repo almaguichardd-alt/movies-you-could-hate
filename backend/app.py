@@ -59,6 +59,10 @@ def get_people(movie_id):
     conn.close()
     return [{"name": r[0], "role": r[1]} for r in rows]
 
+# endpoint: homepage 
+@app.route("/")
+def home():
+    return {"message": "Movies You Could Hate API is running!"}
 
 # endpoint: return the 3 most different movies
 @app.get("/movies/<int:movie_id>/hated")
