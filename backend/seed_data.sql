@@ -55,7 +55,8 @@ INSERT INTO Movie (title, violence_level, pacing, tone) VALUES
 ('Silver Linings Playbook', 2, 4, 3),
 ('La Dolce Vita', 1, 2, 3),
 ('Good Will Hunting', 1, 3, 3),
-('The Truman Show', 1, 4, 3);
+('The Truman Show', 1, 4, 3),
+('Happy Gilmore', 2, 4, 1);
 
 INSERT INTO MovieGenre (movie_id, genre_id) VALUES
 (1, 1), 
@@ -107,7 +108,7 @@ INSERT INTO MovieGenre (movie_id, genre_id) VALUES
 (47, 5), 
 (48, 5), 
 (49, 5), 
-(50, 5);
+(50, 2);
 
 INSERT INTO Person (name, role) VALUES
 ('Ryan Gosling', 'actor'),
@@ -138,7 +139,8 @@ INSERT INTO Person (name, role) VALUES
 ('Jennifer Lawrence', 'actor'),
 ('Brad Pitt', 'actor'),
 ('Natalie Portman', 'actor'),
-('Margot Robbie', 'actor');
+('Margot Robbie', 'actor'),
+('Adam Sandler', 'actor');
 
 INSERT INTO MoviePerson (movie_id, person_id) VALUES
 (1, 1), (1, 2),
@@ -164,4 +166,4 @@ INSERT INTO MoviePerson (movie_id, person_id) VALUES
 (39, 19),
 (43, 21),
 (49, 23),
-(50, 25);
+(50, 30);
