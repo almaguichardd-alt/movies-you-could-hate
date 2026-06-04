@@ -6,6 +6,8 @@ from hate_score import compute_hate_score
 app = Flask(__name__)
 CORS(app)  # enable CORS for all routes
 import re
+import requests
+TMDB_API_KEY = "YOUR_API_KEY_HERE"
 
 
 # helper to find a film
@@ -92,7 +94,13 @@ def hated_movies(movie_id):
     # sort by descending score
     scores.sort(reverse=True, key=lambda x: x[0])
     # take the 3 worst films
-    top3 = [m for _, m in scores[:3]]
+    #top3 = [m for _, m in scores[:3]]
+    top3 = []
+    for _, movie in scores[:3]:
+        poster = get_poster_url(movie["title"])
+        movie["poster"] = poster
+        top3.append(movie)
+
     return jsonify(top3)
 
 
@@ -137,6 +145,16 @@ def get_all_movies():
         {"movie_id": r[0], "title": r[1]}
         for r in rows
     ])
+
+def get_poster_url(title):
+    url = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_API_KEY}&query={title}"
+    response = requests.get(url).json()
+
+    if response["results"]:
+        poster_path = response["results"][0]["poster_path"]
+        return f"https://image.tmdb.org/t/p/w300{poster_path}"
+    else:
+        return None
 
 
 # launch the server
