@@ -42,16 +42,27 @@
 # Enpoint 3: /movies
 # returns all movies (needed for the frontend)
 #
+#
+#
 # How to use the Frontend
 # This project includes a simple frontend (HTML/CSS/JS) that interacts with the Flask API to:
 #  display the list of available movies
 #  let the user select a movie they like
 #  show the 3 movies they are most likely to “hate” based on the algorithm
 #
-# 1. Start the Flash Backend : 
+# 1. Start the Flask Backend : 
 # From the backend folder compile : python app.py (You should see "Running on http://127.0.0.1:50003")
 # 2. Open the Frontend : double-click on index.html in the frontend folder (open with a browser)
 # 3. How the Frontend works : 
+# When the page loads, script.js calls the backend: fetch("http://127.0.0.1:5000/movies")
+# The dropdown is automatically filled with all movies from the database.
+# The user selects a movie and clicks: Show movies I might hate
+# The frontend calls: fetch(`http://127.0.0.1:5000/movies/${movieId}/hated`)
+# The 3 recommended “hate movies” appear in the Results section.
+# 4. Required Configuration: CORS
+# Because the frontend is opened locally (file://), the browser blocks requests unless CORS is enabled : installing Flask- CORS is necessary (python -m pip install flask-cors)
+# 5. expected result :
+# When everything is set up correctly: the dropdown loads all movies, selecting a movie triggers the API, the 3 “movies you could hate” appear
 
 
 
