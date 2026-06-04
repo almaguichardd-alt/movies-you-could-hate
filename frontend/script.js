@@ -25,9 +25,10 @@ document.getElementById("btn").addEventListener("click", () => {
         const div = document.createElement("div");
         div.className = "movie-card";
         div.innerHTML = `
-          <img src="https://placehold.co/200x300/444/FFF?text=${encodeURIComponent(movie.title)}" class="poster">
+          <img src="https://placehold.co/200x300/444/FFF?text=Poster" class="poster">
           <p>${movie.title}</p>
         `;
+
         results.appendChild(div);
       });
     });

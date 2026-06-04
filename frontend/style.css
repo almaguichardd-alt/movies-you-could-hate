@@ -54,8 +54,9 @@ h2 {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 10px;
   gap: 20px;
 }
 
@@ -67,6 +68,7 @@ h2 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   max-width: 160px;
   margin: auto;
+  flex : 0 0 160px;
 }
 
 .movie-card:hover {
