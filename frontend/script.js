@@ -19,7 +19,8 @@ document.getElementById("btn").addEventListener("click", () => {
 
   // Reset UI
   results.innerHTML = "";
-  
+  loading.style.display = "flex"; // show spinner
+
   // Show loading
   loading.style.display = "block";
 
