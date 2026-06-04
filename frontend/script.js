@@ -21,14 +21,10 @@ document.getElementById("btn").addEventListener("click", () => {
   results.innerHTML = "";
   loading.style.display = "flex"; // show spinner
 
-  // Show loading
-  loading.style.display = "block";
-
   fetch(`http://127.0.0.1:5000/movies/${movieId}/hated`)
     .then(res => res.json())
     .then(data => {
-      // Hide loading
-      loading.style.display = "none";
+      loading.style.display = "none"; // hide spinner
 
       data.forEach(movie => {
         const div = document.createElement("div");
@@ -47,7 +43,3 @@ document.getElementById("btn").addEventListener("click", () => {
       results.innerHTML = "<p>Error loading results.</p>";
     });
 });
-
-
-// Show loading state
-results.innerHTML = "<div class='loading'>Loading...</div>";
