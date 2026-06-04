@@ -24,8 +24,14 @@ document.getElementById("btn").addEventListener("click", () => {
       data.forEach(movie => {
         const div = document.createElement("div");
         div.className = "movie-card";
-        div.textContent = movie.title;
+        div.innerHTML = `
+          <img src="https://placehold.co/200x300?text=${movie.title}" class="poster">
+          <p>${movie.title}</p>
+        `;
         results.appendChild(div);
       });
     });
 });
+
+// Show loading state
+results.innerHTML = "<div class='loading'>Loading...</div>";
