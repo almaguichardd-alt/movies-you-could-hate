@@ -24,11 +24,13 @@ document.getElementById("btn").addEventListener("click", () => {
       data.forEach(movie => {
         const div = document.createElement("div");
         div.className = "movie-card";
+        
+        // Poster placeholder (visible on dark background)
+        const posterUrl = "https://placehold.co/200x300/444/FFF?text=Poster";
         div.innerHTML = `
-          <img src="https://placehold.co/200x300/444/FFF?text=Poster" class="poster">
+          <img src="${posterUrl}" class="poster">
           <p>${movie.title}</p>
         `;
-
         results.appendChild(div);
       });
     });

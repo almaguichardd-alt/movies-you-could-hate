@@ -53,31 +53,35 @@ h2 {
   font-size: 28px;
 }
 
-.grid {
+.carousel {
   display: flex;
+  gap: 20px;
   overflow-x: auto;
   padding-bottom: 10px;
-  gap: 20px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome */
 }
 
 .movie-card {
+  flex: 0 0 140px;
   background: #1f1f1f;
   border-radius: 8px;
   padding: 10px;
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  max-width: 160px;
-  margin: auto;
-  flex : 0 0 160px;
 }
 
 .movie-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.12);
   box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
 .poster {
   width: 100%;
+  height: auto;
   border-radius: 6px;
   margin-bottom: 10px;
 }
