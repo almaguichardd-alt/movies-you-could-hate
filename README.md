@@ -15,7 +15,9 @@
 #
 # (6) Open the file database.py (located in movies-you-could-hate\backend\database.py) and change the password by replacing ‘CHANGEME!’ with your local PostgreSQL password 
 #
-# (7) Run the Flask app by running: python app.py
+# (7) Configure TMDB API key for real posters at https://www.themoviedb.org/settings/api then in app.py : TMDB_API_KEY = "YOUR_API_KEY_HERE" (if no key is provided the fronten will displace placeholder posters)
+#
+# (8) Run the Flask app by running: python app.py
 #
 #
 #
@@ -44,6 +46,7 @@
 #
 #
 #
+#
 # How to use the Frontend
 # This project includes a simple frontend (HTML/CSS/JS) that interacts with the Flask API to:
 #  display the list of available movies
@@ -52,17 +55,22 @@
 #
 # 1. Start the Flask Backend : 
 # From the backend folder compile : python app.py (You should see "Running on http://127.0.0.1:50003")
+#
 # 2. Open the Frontend : double-click on index.html in the frontend folder (open with a browser)
+#
 # 3. How the Frontend works : 
 # When the page loads, script.js calls the backend: fetch("http://127.0.0.1:5000/movies")
 # The dropdown is automatically filled with all movies from the database.
 # The user selects a movie and clicks: Show movies I might hate
 # The frontend calls: fetch(`http://127.0.0.1:5000/movies/${movieId}/hated`)
 # The 3 recommended “hate movies” appear in the Results section.
+#
 # 4. Required Configuration: CORS
 # Because the frontend is opened locally (file://), the browser blocks requests unless CORS is enabled : installing Flask- CORS is necessary (python -m pip install flask-cors)
+#
 # 5. expected result :
 # When everything is set up correctly: the dropdown loads all movies, selecting a movie triggers the API, the 3 “movies you could hate” appear
-
+#
+# The frontend includes a "Netflix‑style" loading spinner that appears only while waiting for the backend response.
 
 
